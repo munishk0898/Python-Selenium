@@ -1,6 +1,6 @@
 import time
-from selenium import webdriver
 from selenium.webdriver.common.by import By
+import library.Driver as D
 
 USERNAME_INPUT = (By.NAME, 'email')
 PASSWORD_INPUT = (By.NAME, 'password')
@@ -10,28 +10,16 @@ LOGIN_BUTTON = (By.CLASS_NAME, 'btn-lg')
 LOGOUT = (By.ID, 'logout')
 
 
-def web_driver():
-    login_driver = webdriver.Chrome()
-    print("First Driver")
-    print(login_driver)
-    login_driver.maximize_window()
-    return login_driver
+def is_url_reachable():
+    D.driver_instance.get("https://www.phptravels.net/admin")
+    return D.driver_instance.title
 
 
-def is_url_reachable(url):
-    driver = web_driver()
-    driver.get(url)
-    return driver.title
-
-
-def web_login(url, user):
-    driver = web_driver()
-    driver.get(url)
+def web_login(user):
     username = user[0]
     password = user[1]
-    print(type(driver))
-    driver.find_element(USERNAME_INPUT).send_keys(username)
-    driver.find_element(PASSWORD_INPUT).send_keys(password)
-    driver.find_element(LOGIN_BUTTON).click()
-    time.sleep(10)
-    return bool(driver.find_element(LOGOUT))
+    D.driver_instance.find_element(*USERNAME_INPUT).send_keys(username)
+    D.driver_instance.find_element(*PASSWORD_INPUT).send_keys(password)
+    D.driver_instance.find_element(*LOGIN_BUTTON).click()
+    D.driver_instance.implicitly_wait(10)
+    return bool(D.driver_instance.find_element(*LOGOUT))

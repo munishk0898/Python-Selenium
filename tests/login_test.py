@@ -1,13 +1,20 @@
 from library import Login
-from data import Webpage_elements
+from data import Webpage_elements as data
 import pytest
+import library.Driver as D
 
 
-def test_url(config_data):
-    assert Login.is_url_reachable(config_data.url) == config_data.Login_page_title
+def setup():
+    D.Initialize()
 
 
-def test_login(config_data):
-    print(config_data.login_credentials)
-    assert Login.web_login(config_data.url, config_data.login_credentials)
+def tearDown():
+    D.CloseDriver()
 
+
+def test_is_url_reachable():
+    assert Login.is_url_reachable()
+
+
+def test_login():
+    assert Login.web_login(data.login_credentials)
