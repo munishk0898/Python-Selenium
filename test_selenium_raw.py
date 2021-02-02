@@ -23,6 +23,3 @@ def test_1():
 def test_2():
     print("Second")
 
-
-def tear_down():
-    print("Finally")
