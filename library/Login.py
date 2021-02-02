@@ -21,5 +21,5 @@ def web_login(user):
     D.driver_instance.find_element(*USERNAME_INPUT).send_keys(username)
     D.driver_instance.find_element(*PASSWORD_INPUT).send_keys(password)
     D.driver_instance.find_element(*LOGIN_BUTTON).click()
-    D.driver_instance.implicitly_wait(10)
+    time.sleep(10)
     return bool(D.driver_instance.find_element(*LOGOUT))

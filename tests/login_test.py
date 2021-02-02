@@ -8,13 +8,13 @@ def setup():
     D.Initialize()
 
 
-def tearDown():
-    D.CloseDriver()
-
-
 def test_is_url_reachable():
     assert Login.is_url_reachable()
 
 
 def test_login():
     assert Login.web_login(data.login_credentials)
+
+
+def teardown():
+    D.CloseDriver()
