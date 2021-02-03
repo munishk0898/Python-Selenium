@@ -8,6 +8,8 @@ REMEMBER_ME = (By.NAME, 'remember')
 FORGOT_PASSWORD = (By.ID, 'link-forgot')
 LOGIN_BUTTON = (By.CLASS_NAME, 'btn-lg')
 LOGOUT = (By.ID, 'logout')
+LOGIN_MESSAGE = (By.CLASS_NAME, 'alert')
+ACCOUNTS = (By.XPATH, '//a[contains(@href,"#ACCOUNTS")]')
 
 
 def is_url_reachable():
@@ -21,5 +23,19 @@ def web_login(user):
     D.driver_instance.find_element(*USERNAME_INPUT).send_keys(username)
     D.driver_instance.find_element(*PASSWORD_INPUT).send_keys(password)
     D.driver_instance.find_element(*LOGIN_BUTTON).click()
-    time.sleep(10)
-    return bool(D.driver_instance.find_element(*LOGOUT))
+    time.sleep(5)
+    return True
+
+
+def expect_wrong_login_message():
+    message = D.driver_instance.find_element(*LOGIN_MESSAGE)
+    if message:
+        print(message.text)
+        return message.text
+    else:
+        raise Exception("Error Message not found")
+    # return D.driver_instance.find_element(*LOGIN_MESSAGE).text
+
+
+def current_driver_title():
+    return D.driver_instance.title
