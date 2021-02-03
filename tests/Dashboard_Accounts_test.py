@@ -10,17 +10,12 @@ def setup():
     D.Initialize()
 
 
-dropdown_elements = ['ACCOUNTS', 'CMS', 'HOTELS', 'FLIGHTS', 'BOATS', 'RENTALS', 'TOURS', 'CARTRAWLER', 'VISA', 'BLOG',
-                     'LOCATIONS',
-                     'OFFERS', 'PAYOUTS']
-dropdown_list_elements = ['Accounts', 'CMS', 'Hotels', 'Flights', 'Boats', 'Rentals', 'TOURS', 'CARTRAWLER', 'VISA',
-                          'BLOG', 'LOCATIONS',
-                          'OFFERS', 'PAYOUTS']
+@pytest.mark.parametrize("j", data.DROPDOWN_SUBMENU_LIST)
+@pytest.mark.parametrize("i", data.dropdown_elements)
+def test_dropdown(i, j):
 
-
-def test_dropdown():
     assert Login.web_login(data.login_credentials)
-    print(Dashboard.click_dropdown_get_list_elements("ACCOUNTS"))
+    print(Dashboard.click_dropdown_get_list_elements(i))
 
 
 def teardown():
