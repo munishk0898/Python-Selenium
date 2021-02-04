@@ -10,12 +10,10 @@ def setup():
     D.Initialize()
 
 
-@pytest.mark.parametrize("j", data.DROPDOWN_SUBMENU_LIST)
-@pytest.mark.parametrize("i", data.dropdown_elements)
-def test_dropdown(i, j):
-
+def test_dropdown():
     assert Login.web_login(data.login_credentials)
-    print(Dashboard.click_dropdown_get_list_elements(i))
+    for i in range(len(data.dropdown_elements)):
+        assert Dashboard.click_dropdown_get_list_elements(data.dropdown_elements[i]) == data.DROPDOWN_SUBMENU_LIST[i]
 
 
 def teardown():

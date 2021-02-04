@@ -31,72 +31,58 @@ def click_dropdown_get_list_elements(label):
         D.driver_instance.find_element(*GENERAL[0]).click()
         time.sleep(3)
         elements = D.driver_instance.find_elements(*GENERAL[1])
-        print(get_text_list(elements))
-        return True
     elif label == 'ACCOUNTS':
         D.driver_instance.find_element(*ACCOUNTS[0]).click()
         time.sleep(3)
         elements = D.driver_instance.find_elements(*ACCOUNTS[1])
-        get_text_list(elements)
     elif label == "CMS":
         D.driver_instance.find_element(*CMS[0]).click()
         time.sleep(3)
         elements = D.driver_instance.find_elements(*CMS[1])
-        get_text_list(elements)
     elif label == "HOTELS":
         D.driver_instance.find_element(*HOTELS[0]).click()
         time.sleep(3)
         elements = D.driver_instance.find_elements(*HOTELS[1])
-        get_text_list(elements)
     elif label == "FLIGHTS":
         D.driver_instance.find_element(*FLIGHTS[0]).click()
         time.sleep(3)
         elements = D.driver_instance.find_elements(*FLIGHTS[1])
-        get_text_list(elements)
     elif label == "BOATS":
         D.driver_instance.find_element(*BOATS[0]).click()
         time.sleep(3)
         elements = D.driver_instance.find_elements(*BOATS[1])
-        get_text_list(elements)
     elif label == "RENTALS":
         D.driver_instance.find_element(*RENTALS[0]).click()
         time.sleep(3)
         elements = D.driver_instance.find_elements(*RENTALS[1])
-        get_text_list(elements)
     elif label == "TOURS":
         D.driver_instance.find_element(*TOURS[0]).click()
         time.sleep(3)
         elements = D.driver_instance.find_elements(*TOURS[1])
-        get_text_list(elements)
     elif label == "CARTRAWLER":
         D.driver_instance.find_element(*CARTRAWLER[0]).click()
         time.sleep(3)
         elements = D.driver_instance.find_elements(*CARTRAWLER[1])
-        get_text_list(elements)
     elif label == "VISA":
         D.driver_instance.find_element(*VISA[0]).click()
         time.sleep(3)
         elements = D.driver_instance.find_elements(*VISA[1])
-        get_text_list(elements)
     elif label == "BLOG":
         D.driver_instance.find_element(*BLOG[0]).click()
         time.sleep(3)
         elements = D.driver_instance.find_elements(*BLOG[1])
-        get_text_list(elements)
     elif label == "LOCATIONS":
         D.driver_instance.find_element(*LOCATIONS[0]).click()
         time.sleep(3)
         elements = D.driver_instance.find_elements(*LOCATIONS[1])
-        get_text_list(elements)
     elif label == "OFFERS":
         D.driver_instance.find_element(*OFFERS[0]).click()
         time.sleep(3)
         elements = D.driver_instance.find_elements(*OFFERS[1])
-        get_text_list(elements)
     elif label == "PAYOUTS":
         D.driver_instance.find_element(*PAYOUTS[0]).click()
         time.sleep(3)
         elements = D.driver_instance.find_elements(*PAYOUTS[1])
-        get_text_list(elements)
     else:
         raise Exception("Expected", label, " dropdown not Found")
+    return get_text_list(elements)
