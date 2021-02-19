@@ -1,16 +1,16 @@
 from selenium import webdriver
 
-driver_instance = None
+driver = None
 
 
 def Initialize():
-    global driver_instance
-    driver_instance= webdriver.Chrome()
-    driver_instance.implicitly_wait(5)
-    load_url = driver_instance.get("https://www.phptravels.net/admin")
+    global driver
+    driver = webdriver.Chrome()
+    driver.implicitly_wait(5)
+    load_url = driver.get("https://www.phptravels.net/admin")
     return load_url
 
 
 def CloseDriver():
-    global driver_instance
-    driver_instance.quit()
+    global driver
+    driver.quit()

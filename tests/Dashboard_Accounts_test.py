@@ -16,5 +16,10 @@ def test_dropdown():
         assert Dashboard.click_dropdown_get_list_elements(data.dropdown_elements[i]) == data.DROPDOWN_SUBMENU_LIST[i]
 
 
+def test_updates():
+    assert Login.web_login(data.login_credentials)
+    Dashboard.check_for_updates()
+
+
 def teardown():
     D.CloseDriver()
